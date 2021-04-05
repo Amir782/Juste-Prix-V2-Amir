@@ -1,12 +1,13 @@
 // Objet de configuration game
 var game = {
-    max: 100,
+    min: 10000,
+    max: 50000,
     // nombre d'essais
     // On creer/initialise un compteur du nombre d'essai de user
     count: 0,
     // nombre à chercher
     getRandom: function(){
-        var randomNumber = Math.round(Math.random() * game.max);
+        var randomNumber = game.min + Math.round(Math.random() * game.max);
         return randomNumber;
     },
     getNumber: function(message){
@@ -57,7 +58,7 @@ var play = function(){
     console.log(randomNumber);
     
     
-    var userNumber = game.getNumber('Veuillez-saisir un nombre compris entre 0 et ' + game.max);
+    var userNumber = game.getNumber('Veuillez-saisir un nombre compris entre ' + game.min + ' et ' + game.max);
     game.count++;
     // Backdoor
     console.log('saisie utilisateur : ' + userNumber);
