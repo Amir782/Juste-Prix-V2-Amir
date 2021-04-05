@@ -1,10 +1,20 @@
+// Objet de configuration game
+var game = {
+    // nombre à chercher
+    randomNumber: getRandom(),
+    // nombre d'essais
+    // On creer/initialise un compteur du nombre d'essai de user
+    count: 0
+};
+
+
+
 //On va créer un programme pour demander à l'utilisateur d'identifier un nombre aléatoire, tant qu'il n'a pas trouvé on lui redemandera. Pour l'aider on lui dira si c'est plus ou si c'est moins.
 
-// On creer une valeur max pour le nombre aléatoire
-var max = 100;
 
-// On creer/initialise un compteur du nombre d'essai de user
-var count = 0;
+
+// // On creer/initialise un compteur du nombre d'essai de user
+// var count = 0;
 
 // On créer un nombre aléatoire grace à l'objet Math
 // La méthode random() permet de générer ce nombre aléatoire qui par défaut est une decimal (float) compris entre 0 et 1
@@ -16,8 +26,8 @@ var getRandom = function(){
     return randomNumber;
 };
 
-var randomNumber = getRandom();
-console.log(randomNumber);
+// var randomNumber = getRandom();
+// console.log(randomNumber);
 
 // FONCTION getNumber
 // On demande à l'user de saisir un nombre
