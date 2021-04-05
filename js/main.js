@@ -1,10 +1,22 @@
 // Objet de configuration game
 var game = {
-    // nombre à chercher
-    randomNumber: getRandom(),
+    max: 100,
     // nombre d'essais
     // On creer/initialise un compteur du nombre d'essai de user
-    count: 0
+    count: 0,
+    // nombre à chercher
+    getRandom: function(){
+        var randomNumber = Math.round(Math.random() * game.max);
+        return randomNumber;
+    },
+    getNumber: function(message){
+        var userNumber = parseInt(window.prompt(message));
+        // Tant que la valeur d'entrée n'est pas un nombre on redemande une saisie
+        while(isNaN(userNumber)){
+            userNumber = parseInt(window.prompt(message));
+        }
+        return userNumber;
+    }
 };
 
 
@@ -21,30 +33,31 @@ var game = {
 // La méthode round permet d'obtenir un entier (integer)
 
 //FONCTION getRandom
-var getRandom = function(){
-    var randomNumber = Math.round(Math.random() * max);
-    return randomNumber;
-};
+// var getRandom = function(){
+//     var randomNumber = Math.round(Math.random() * max);
+//     return randomNumber;
+// };
 
-// var randomNumber = getRandom();
-// console.log(randomNumber);
 
 // FONCTION getNumber
 // On demande à l'user de saisir un nombre
 // La méthode Window.prompt() affiche une boîte de dialogue, éventuellement avec un message, qui invite l'utilisateur à saisir un texte.
 // La méthode parseInt() permet de convertir la valeur de prompt en entier (integer)
-var getNumber = function(message){
-    var userNumber = parseInt(window.prompt(message));
-    // Tant que la valeur d'entrée n'est pas un nombre on redemande une saisie
-    while(isNaN(userNumber)){
-        userNumber = parseInt(window.prompt(message));
-    }
-    return userNumber;
-};
+// var getNumber = function(message){
+//     var userNumber = parseInt(window.prompt(message));
+//     // Tant que la valeur d'entrée n'est pas un nombre on redemande une saisie
+//     while(isNaN(userNumber)){
+//         userNumber = parseInt(window.prompt(message));
+//     }
+//     return userNumber;
+// };
+
+var randomNumber = game.getRandom();
+console.log(randomNumber);
 
 
-var userNumber = getNumber('Veuillez-saisir un nombre compris entre 0 et ' + max);
-count++;
+var userNumber = game.getNumber('Veuillez-saisir un nombre compris entre 0 et ' + game.max);
+game.count++;
 // Backdoor
 console.log('saisie utilisateur : ' + userNumber);
 
@@ -63,7 +76,7 @@ while(userNumber !== randomNumber){
         userNumber = parseInt(window.prompt('C\'est moins : '));
         console.log('saisie utilisateur : ' + userNumber);
     }
-    count++;
+    game.count++;
 }
 
 
@@ -71,4 +84,5 @@ while(userNumber !== randomNumber){
 // autrement dit que la condition dans la boucle while est passée de true à false
 // La méthode alert() permet d'afficher un message d'alerte
 alert('C\'est Gagné !');
-alert('Votre nombre de tentatives est de : ' + count);
+alert('Votre nombre de tentatives est de : ' + game.count);
+
