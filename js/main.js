@@ -52,37 +52,40 @@ var game = {
 //     return userNumber;
 // };
 
-var randomNumber = game.getRandom();
-console.log(randomNumber);
-
-
-var userNumber = game.getNumber('Veuillez-saisir un nombre compris entre 0 et ' + game.max);
-game.count++;
-// Backdoor
-console.log('saisie utilisateur : ' + userNumber);
-
-
-// Tant que l'utilisateur n'a pas trouvé le nombre aléatoire on lui redemande
-// On ne connait pas a l'avance le nombre d'iteration nécessaire donc j'utilise la boucle WHILE
-while(userNumber !== randomNumber){
-    // Pour aider user on lui dira si c'est plus ou si c'est moins
-    // Si c'est plus alors prompt(...)
-    if(userNumber < randomNumber){
-        userNumber = parseInt(window.prompt('C\'est plus : '));
-        console.log('saisie utilisateur : ' + userNumber);
-    }
-    // Si c'est moins alors prompt(...)
-    else if(userNumber > randomNumber){
-        userNumber = parseInt(window.prompt('C\'est moins : '));
-        console.log('saisie utilisateur : ' + userNumber);
-    }
+var play = function(){
+    var randomNumber = game.getRandom();
+    console.log(randomNumber);
+    
+    
+    var userNumber = game.getNumber('Veuillez-saisir un nombre compris entre 0 et ' + game.max);
     game.count++;
-}
+    // Backdoor
+    console.log('saisie utilisateur : ' + userNumber);
+    
+    
+    // Tant que l'utilisateur n'a pas trouvé le nombre aléatoire on lui redemande
+    // On ne connait pas a l'avance le nombre d'iteration nécessaire donc j'utilise la boucle WHILE
+    while(userNumber !== randomNumber){
+        // Pour aider user on lui dira si c'est plus ou si c'est moins
+        // Si c'est plus alors prompt(...)
+        if(userNumber < randomNumber){
+            userNumber = parseInt(window.prompt('C\'est plus : '));
+            console.log('saisie utilisateur : ' + userNumber);
+        }
+        // Si c'est moins alors prompt(...)
+        else if(userNumber > randomNumber){
+            userNumber = parseInt(window.prompt('C\'est moins : '));
+            console.log('saisie utilisateur : ' + userNumber);
+        }
+        game.count++;
+    }
+    
+    
+    // On sort de la boucle cela signifie que user trouve le nombre aleatoire
+    // autrement dit que la condition dans la boucle while est passée de true à false
+    // La méthode alert() permet d'afficher un message d'alerte
+    alert('C\'est Gagné !');
+    alert('Votre nombre de tentatives est de : ' + game.count);
+};
 
-
-// On sort de la boucle cela signifie que user trouve le nombre aleatoire
-// autrement dit que la condition dans la boucle while est passée de true à false
-// La méthode alert() permet d'afficher un message d'alerte
-alert('C\'est Gagné !');
-alert('Votre nombre de tentatives est de : ' + game.count);
-
+play();
