@@ -60,7 +60,8 @@ var game = {
             game.play();
         } else{
             for(var i = 0; i < game['scores'].length; i++){
-                console.log('Partie ' + i + ' : ' + game.scores[i] + ' essais');
+                var partieEnCours = i + 1;
+                console.log('Partie ' + partieEnCours + ' : ' + game.scores[i] + ' essais');
             }
         }
 
@@ -83,5 +84,3 @@ game.play();
 // La méthode alert() permet d'afficher un message d'alerte
 // alert('C\'est Gagné !');
 // alert('Votre nombre de tentatives est de : ' + game.count);
-
-
